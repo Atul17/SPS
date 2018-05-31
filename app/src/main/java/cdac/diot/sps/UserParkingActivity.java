@@ -2,17 +2,32 @@ package cdac.diot.sps;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserParkingActivity extends AppCompatActivity implements View.OnClickListener {
     private CardView crdpl1, crdpl2, crdpl3, crdpl4, crdpl5, crdpl6;
-    private TextView txtpl1, txtpl2, txtpl3, txtpl4, txtpl5, txtpl6;
+    private TextView txtpl1, txtpl2, txtpl3, txtpl4, txtpl5, txtpl6, txtfl1;
     private String prk_name;
     private Context mContext;
+    private String userID;
+
+    private FirebaseDatabase mFirebaseIntance;
+    private DatabaseReference mFirebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +47,7 @@ public class UserParkingActivity extends AppCompatActivity implements View.OnCli
         txtpl4 = findViewById(R.id.txtpl4);
         txtpl5 = findViewById(R.id.txtpl5);
         txtpl6 = findViewById(R.id.txtpl6);
+        txtfl1 = findViewById(R.id.txtfl1);
 
         mContext = UserParkingActivity.this;
         crdpl1.setOnClickListener(this);
@@ -40,6 +56,43 @@ public class UserParkingActivity extends AppCompatActivity implements View.OnCli
         crdpl4.setOnClickListener(this);
         crdpl5.setOnClickListener(this);
         crdpl6.setOnClickListener(this);
+
+        mFirebaseIntance = FirebaseDatabase.getInstance();
+        mFirebaseDatabase = mFirebaseIntance.getReference().child("sps_parking_slots_data");
+        mFirebaseDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                ParkingSlotDetails slotDetails = dataSnapshot.getValue(ParkingSlotDetails.class);
+                long b = slotDetails.getBook_status();
+                long st = slotDetails.getSlot_status();
+                String pl_name = slotDetails.getpl_name();
+                txtfl1.setText(b + " " + st + " " + pl_name);
+                if (b == 1) {
+                    crdpl3.setCardBackgroundColor(R.color.book);
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
     }
 
