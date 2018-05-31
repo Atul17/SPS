@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:padding="5dp"
+    tools:context=".UserParkingBookActivity">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/edt1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edtprk_slot_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:hint="Parking Slot No"
+            android:textColor="@color/colorAccent"
+            android:textSize="15dp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ed2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edt1">
+
+        <EditText
+            android:id="@+id/edtprk_slot_vehicle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Parking Slot Vehicle Number"
+            android:inputType="text"
+            android:textColor="@color/colorAccent"
+            android:textSize="15dp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnBookSlt"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ed2"
+        android:layout_centerHorizontal="true"
+        android:text="Book Slot"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15dp" />
+</RelativeLayout>
