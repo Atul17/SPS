@@ -69,10 +69,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnregister:
-                //if (validateEnteries()) {
-                //  Toast.makeText(mContext, "Thank You", Toast.LENGTH_SHORT).show();
-
-                //}
                 name = edt_usr_name.getText().toString().trim();
                 email = edt_usr_email.getText().toString().trim();
                 mob = edt_usr_mob.getText().toString().trim();
@@ -125,9 +121,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                         } else {
                             if (TextUtils.isEmpty(userID)) {
                                 createUser(name, email, mob, passwd);
-                            } //else {
-                            //updateUser(name, email, mob, passwd);
-                            //}
+                            }
                             Intent intent = new Intent(mContext, SignInActivity.class);
                             startActivity(intent);
                             finish();
@@ -142,10 +136,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    private void updateUser(String name, String email, String mob, String passwd) {
-
-    }
-
     private void createUser(String name, String email, String mob, String passwd) {
         if (TextUtils.isEmpty(userID)) {
             userID = mFirebaseDatabase.push().getKey();
@@ -153,50 +143,5 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         UserDetails userDetails = new UserDetails(name, email, mob, passwd);
         mFirebaseDatabase.child(userID).setValue(userDetails);
     }
-/*
-    private boolean validateEnteries() {
-        name = edt_usr_name.getText().toString().trim();
-        email = edt_usr_email.getText().toString().trim();
-        mob = edt_usr_mob.getText().toString().trim();
-        passwd = edt_usr_passwd.getText().toString().trim();
-        cnfpasswd = edt_usr_cnf_passwd.getText().toString().trim();
 
-        if (name.isEmpty()) {
-            txtInputname.setError("Please Enter Name");
-            return false;
-        } else {
-            txtInputname.setErrorEnabled(false);
-        }
-
-        if (email.isEmpty()) {
-            txtInputemail.setError("Please Enter Email");
-            return false;
-        } else {
-            txtInputemail.setErrorEnabled(false);
-        }
-        if (mob.isEmpty()) {
-            txtInputmob.setError("Please Enter Mobile");
-            return false;
-        } else {
-            txtInputmob.setErrorEnabled(false);
-        }
-        if (passwd.isEmpty()) {
-            txtInputpasswd.setError("Please Enter Password");
-            return false;
-        } else {
-            txtInputpasswd.setErrorEnabled(false);
-        }
-        if (cnfpasswd.isEmpty()) {
-            txtInputcnfpasswd.setError("Please Enter Confirm Password");
-            return false;
-        } else {
-            txtInputcnfpasswd.setErrorEnabled(false);
-        }
-        if (!passwd.equals(cnfpasswd)) {
-            Toast.makeText(mContext, "Password Don't Match", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-
-    }*/
 }
