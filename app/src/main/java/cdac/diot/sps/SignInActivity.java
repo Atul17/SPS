@@ -40,9 +40,12 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         btn_signin = findViewById(R.id.bt_sign_in);
         mProgressBar = findViewById(R.id.progressbar);
 
+
         auth = FirebaseAuth.getInstance();
-        txt_signup.setOnClickListener(this);
+
         btn_signin.setOnClickListener(this);
+
+        txt_signup.setOnClickListener(this);
 
 
     }
@@ -52,7 +55,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         switch (v.getId()) {
             case R.id.bt_sign_in:
                 //validateLogin();
-
                 email = edt_emailid.getText().toString().trim();
                 pwsd = edt_passwd.getText().toString().trim();
                 if (email.isEmpty()) {
@@ -76,6 +78,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                         } else {
                             Toast.makeText(mContext, "Login Success", Toast.LENGTH_LONG).show();
                             Intent i = new Intent(mContext, UserActivity.class);
+                            i.putExtra("email", email);
                             startActivity(i);
                             finish();
                         }
@@ -89,28 +92,5 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         }
 
     }
-/*
-    private void validateLogin() {
-        email = edt_emailid.getText().toString().trim();
-        pwsd = edt_passwd.getText().toString().trim();
-        boolean checkCondition = true;
-        if (email.isEmpty()) {
-            Snackbar.make(findViewById(android.R.id.content), "Please Enter Email ID", Snackbar.LENGTH_SHORT).show();
-            checkCondition = false;
-        }
-        if (pwsd.isEmpty()) {
-            Snackbar.make(findViewById(android.R.id.content), "Please Enter Password", Snackbar.LENGTH_SHORT).show();
-            checkCondition = false;
-        }
-        if (checkCondition) {
-            String emailid = "user@cdac.com", pass = "user1234";
-            if (email.equals(emailid) && pwsd.equals(pass)) {
-                Intent i = new Intent(mContext, UserActivity.class);
-                startActivity(i);
-                Toast.makeText(mContext, "Login Successfull", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(mContext, "Please Enter Valid Email ID and Password", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }*/
+
 }

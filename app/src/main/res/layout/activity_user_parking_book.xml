@@ -25,10 +25,26 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/ed2"
+        android:id="@+id/edt_area_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/edt1">
+
+        <EditText
+            android:id="@+id/edtprk_area_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:hint="Parking Area Name"
+            android:textColor="@color/colorAccent"
+            android:textSize="15dp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ed2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edt_area_name">
 
         <EditText
             android:id="@+id/edtprk_slot_vehicle"
@@ -36,6 +52,7 @@
             android:layout_height="wrap_content"
             android:hint="Parking Slot Vehicle Number"
             android:inputType="text"
+            android:textAllCaps="true"
             android:textColor="@color/colorAccent"
             android:textSize="15dp" />
     </android.support.design.widget.TextInputLayout>

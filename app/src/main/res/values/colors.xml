@@ -8,6 +8,6 @@
     <color name="navigationBarColor">#000000</color>
     <color name="edittextcolor">#EF5350</color>
     <color name="btntextcolor">#EF5350</color>
-    <color name="book">#EF9A9A</color>
+    <color name="book">#EF5350</color>
 
 </resources>
