@@ -71,89 +71,26 @@ public class UserParkingActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 progressBar.setVisibility(View.GONE);
-                for (int i = 0; i < 6; i++) {
-                    ParkingSlotDetails slotDetails = dataSnapshot.getValue(ParkingSlotDetails.class);
-                    long b = slotDetails.getBook_status();
-                    long st = slotDetails.getSlot_status();
-                    String pl_name = slotDetails.getpl_name();
-                    //txtfl1.setText(b + " " + st + " " + pl_name);
-                    if (b == 1 && pl_name.equals("pl1")) {
-                        crdpl1.setCardBackgroundColor(Color.RED);
-                        crdpl1.setClickable(false);
-                    } else if (b == 1 && pl_name.equals("pl2")) {
-                        crdpl2.setCardBackgroundColor(Color.RED);
-                        crdpl2.setClickable(false);
-
-                    } else if (b == 1 && pl_name.equals("pl3")) {
-                        crdpl3.setCardBackgroundColor(Color.RED);
-                        crdpl3.setClickable(false);
-
-                    } else if (b == 1 && pl_name.equals("pl4")) {
-                        crdpl4.setCardBackgroundColor(Color.RED);
-                        crdpl4.setClickable(false);
-
-                    } else if (b == 1 && pl_name.equals("pl5")) {
-                        crdpl5.setCardBackgroundColor(Color.RED);
-                        crdpl5.setClickable(false);
-
-                    } else if (b == 1 && pl_name.equals("pl6")) {
-                        crdpl6.setCardBackgroundColor(Color.RED);
-                        crdpl6.setClickable(false);
-                    } else {
-
-                    }
-                }
+                getSlotData(dataSnapshot);
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 progressBar.setVisibility(View.VISIBLE);
-
-                for (int i = 0; i < 6; i++) {
-                    progressBar.setVisibility(View.GONE);
-
-                    ParkingSlotDetails slotDetails = dataSnapshot.getValue(ParkingSlotDetails.class);
-                    long b = slotDetails.getBook_status();
-                    long st = slotDetails.getSlot_status();
-                    String pl_name = slotDetails.getpl_name();
-                    //txtfl1.setText(b + " " + st + " " + pl_name);
-                    if (b == 1 && pl_name.equals("pl1")) {
-                        crdpl1.setCardBackgroundColor(Color.RED);
-                        crdpl1.setClickable(false);
-                    } else if (b == 1 && pl_name.equals("pl2")) {
-                        crdpl2.setCardBackgroundColor(Color.RED);
-                        crdpl2.setClickable(false);
-
-                    } else if (b == 1 && pl_name.equals("pl3")) {
-                        crdpl3.setCardBackgroundColor(Color.RED);
-                        crdpl3.setClickable(false);
-
-                    } else if (b == 1 && pl_name.equals("pl4")) {
-                        crdpl4.setCardBackgroundColor(Color.RED);
-                        crdpl4.setClickable(false);
-
-                    } else if (b == 1 && pl_name.equals("pl5")) {
-                        crdpl5.setCardBackgroundColor(Color.RED);
-                        crdpl5.setClickable(false);
-
-                    } else if (b == 1 && pl_name.equals("pl6")) {
-                        crdpl6.setCardBackgroundColor(Color.RED);
-                        crdpl6.setClickable(false);
-                    } else {
-
-                    }
-                }
-
+                getSlotData(dataSnapshot);
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
+                progressBar.setVisibility(View.GONE);
+                getSlotData(dataSnapshot);
 
             }
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
+                progressBar.setVisibility(View.GONE);
+                getSlotData(dataSnapshot);
             }
 
             @Override
@@ -162,6 +99,44 @@ public class UserParkingActivity extends AppCompatActivity implements View.OnCli
             }
         });
 
+
+    }
+
+    private void getSlotData(DataSnapshot dataSnapshot) {
+        for (int i = 0; i < 6; i++) {
+            progressBar.setVisibility(View.GONE);
+
+            ParkingSlotDetails slotDetails = dataSnapshot.getValue(ParkingSlotDetails.class);
+            long b = slotDetails.getBook_status();
+            long st = slotDetails.getSlot_status();
+            String pl_name = slotDetails.getpl_name();
+            //txtfl1.setText(b + " " + st + " " + pl_name);
+            if (b == 1 && pl_name.equals("pl1")) {
+                crdpl1.setCardBackgroundColor(Color.RED);
+                crdpl1.setClickable(false);
+            } else if (b == 1 && pl_name.equals("pl2")) {
+                crdpl2.setCardBackgroundColor(Color.RED);
+                crdpl2.setClickable(false);
+
+            } else if (b == 1 && pl_name.equals("pl3")) {
+                crdpl3.setCardBackgroundColor(Color.RED);
+                crdpl3.setClickable(false);
+
+            } else if (b == 1 && pl_name.equals("pl4")) {
+                crdpl4.setCardBackgroundColor(Color.RED);
+                crdpl4.setClickable(false);
+
+            } else if (b == 1 && pl_name.equals("pl5")) {
+                crdpl5.setCardBackgroundColor(Color.RED);
+                crdpl5.setClickable(false);
+
+            } else if (b == 1 && pl_name.equals("pl6")) {
+                crdpl6.setCardBackgroundColor(Color.RED);
+                crdpl6.setClickable(false);
+            } else {
+
+            }
+        }
 
     }
 

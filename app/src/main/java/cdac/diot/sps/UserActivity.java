@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -20,10 +22,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -36,6 +47,11 @@ public class UserActivity extends AppCompatActivity
     private String name;
     private TextView txt_indr, txt_white;
     private RecyclerView rcv_my_book;
+    private FirebaseDatabase mFirebaseIntance;
+    private DatabaseReference mFirebaseDatabase;
+    private ParkingBookDetailsAdapter detailsAdapter;
+    private List<ParkingBookingDetails> bookingDetailsList;
+    private ProgressBar bar;
 
     @Override
     protected void onStart() {
@@ -62,7 +78,7 @@ public class UserActivity extends AppCompatActivity
 
         auth = FirebaseAuth.getInstance();
 
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -71,6 +87,10 @@ public class UserActivity extends AppCompatActivity
                 if (user == null) {
                     startActivity(new Intent(mContext, SignInActivity.class));
                     finish();
+                } else {
+                    String userEmail = user.getEmail();
+                    String userID = user.getUid();
+                    txtUserName.setText(userEmail + " " + userID);
                 }
 
             }
@@ -92,18 +112,73 @@ public class UserActivity extends AppCompatActivity
         txt_indr = findViewById(R.id.txt_indr_area);
         txt_white = findViewById(R.id.txt_white_area);
         txtUserName = header.findViewById(R.id.txtusr_name);
+        bar = findViewById(R.id.progressbar);
+        bar.setVisibility(View.VISIBLE);
 
         rcv_my_book = findViewById(R.id.rcv_my_book);
+
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             name = bundle.getString("email");
 
         }
 
-        txtUserName.setText(name);
+        // txtUserName.setText(name);
         mContext = UserActivity.this;
         crdindr.setOnClickListener(this);
         crdwhite.setOnClickListener(this);
+
+        mFirebaseIntance = FirebaseDatabase.getInstance();
+        mFirebaseDatabase = mFirebaseIntance.getReference().child("sps_booking_details");
+
+        bookingDetailsList = new ArrayList<>();
+        rcv_my_book.setLayoutManager(new LinearLayoutManager(this));
+
+        mFirebaseDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                bar.setVisibility(View.GONE);
+                getBookingData(dataSnapshot);
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                bar.setVisibility(View.GONE);
+
+                getBookingData(dataSnapshot);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+
+    private void getBookingData(DataSnapshot dataSnapshot) {
+        ParkingBookingDetails bookingDetails = dataSnapshot.getValue(ParkingBookingDetails.class);
+        String area_name = bookingDetails.getArea_name();
+        String pl_no = bookingDetails.getPl_no();
+        String vehicle_no = bookingDetails.getVehicle_no();
+        ParkingBookingDetails details = new ParkingBookingDetails(pl_no, vehicle_no, area_name);
+        bookingDetailsList.add(details);
+        detailsAdapter = new ParkingBookDetailsAdapter(mContext, bookingDetailsList);
+        rcv_my_book.setAdapter(detailsAdapter);
+
+
     }
 
     @Override
@@ -204,4 +279,6 @@ public class UserActivity extends AppCompatActivity
                 break;
         }
     }
+
+
 }

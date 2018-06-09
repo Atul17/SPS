@@ -1,5 +1,6 @@
 package cdac.diot.sps;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import java.util.List;
 
 public class ParkingBookDetailsAdapter extends RecyclerView.Adapter<ParkingBookDetailsAdapter.MyViewHolder> {
     private List<ParkingBookingDetails> bookingDetails;
+    private Context mContext;
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -20,8 +22,8 @@ public class ParkingBookDetailsAdapter extends RecyclerView.Adapter<ParkingBookD
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         ParkingBookingDetails details = bookingDetails.get(position);
-        holder.area_name.setText(details.getArea_name());
-        holder.pl_no.setText(details.getPl_no());
+        holder.area_name.setText(details.getArea_name().toUpperCase());
+        holder.pl_no.setText(details.getPl_no().toUpperCase());
 
     }
 
@@ -42,8 +44,10 @@ public class ParkingBookDetailsAdapter extends RecyclerView.Adapter<ParkingBookD
 
     }
 
-    public ParkingBookDetailsAdapter(List<ParkingBookingDetails> bookingDetails) {
+    public ParkingBookDetailsAdapter(Context mContext, List<ParkingBookingDetails> bookingDetails) {
         this.bookingDetails = bookingDetails;
+        this.mContext = mContext;
+
 
     }
 }
