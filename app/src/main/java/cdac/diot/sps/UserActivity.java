@@ -74,7 +74,8 @@ public class UserActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setIcon(R.drawable.ic_icon);
-
+        bar = findViewById(R.id.progressbar);
+        bar.setVisibility(View.VISIBLE);
 
         auth = FirebaseAuth.getInstance();
 
@@ -90,7 +91,7 @@ public class UserActivity extends AppCompatActivity
                 } else {
                     String userEmail = user.getEmail();
                     String userID = user.getUid();
-                    txtUserName.setText(userEmail + " " + userID);
+                    txtUserName.setText(userEmail);
                 }
 
             }
@@ -112,18 +113,11 @@ public class UserActivity extends AppCompatActivity
         txt_indr = findViewById(R.id.txt_indr_area);
         txt_white = findViewById(R.id.txt_white_area);
         txtUserName = header.findViewById(R.id.txtusr_name);
-        bar = findViewById(R.id.progressbar);
-        bar.setVisibility(View.VISIBLE);
+        // bar = findViewById(R.id.progressbar);
+        //bar.setVisibility(View.VISIBLE);
 
         rcv_my_book = findViewById(R.id.rcv_my_book);
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            name = bundle.getString("email");
-
-        }
-
-        // txtUserName.setText(name);
         mContext = UserActivity.this;
         crdindr.setOnClickListener(this);
         crdwhite.setOnClickListener(this);
@@ -145,7 +139,6 @@ public class UserActivity extends AppCompatActivity
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 bar.setVisibility(View.GONE);
-
                 getBookingData(dataSnapshot);
             }
 
@@ -243,17 +236,24 @@ public class UserActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_user_account) {
+            startActivity(new Intent(mContext,UserAccountDetailsActivity.class));
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_sign_out) {
+            AlertDialog alertDialog = new AlertDialog.Builder(this).setMessage("Do you want to logout ?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    auth.signOut();
+                    finish();
 
-        } else if (id == R.id.nav_manage) {
+                }
+            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+                }
+            }).show();
+            return true;
 
         }
 

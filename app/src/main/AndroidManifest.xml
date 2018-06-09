@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cdac.diot.sps">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_icon"
@@ -9,7 +11,9 @@
         android:roundIcon="@drawable/ic_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
+        <activity android:name=".UserAccountDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" />
         <activity
             android:name=".SplashScreenActivity"
             android:screenOrientation="portrait"
@@ -36,7 +40,7 @@
         <activity
             android:name=".UserParkingActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".UserParkingBookActivity"></activity>
+        <activity android:name=".UserParkingBookActivity" />
     </application>
 
 </manifest>

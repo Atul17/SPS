@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        app:cardBackgroundColor="#CFD8DC"
+        app:cardBackgroundColor="@color/cardmaincolor"
         app:cardCornerRadius="8dp">
 
         <LinearLayout
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:padding="5dp"
-                app:cardBackgroundColor="#F1F8E9">
+                app:cardBackgroundColor="@color/cardlistcolor">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -60,7 +60,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_toRightOf="@id/img_prk"
                         android:text="Indiranagar"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/parkareacolor"
                         android:textSize="25dp"
                         android:textStyle="bold" />
 
@@ -86,7 +86,7 @@
                 android:layout_below="@id/crdindiranagar"
                 android:layout_margin="5dp"
                 android:padding="5dp"
-                app:cardBackgroundColor="#B2EBF2">
+                app:cardBackgroundColor="@color/cardlistcolor">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -107,7 +107,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_toRightOf="@id/img_prk2"
                         android:text="WhiteField"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/parkareacolor"
                         android:textSize="25dp"
                         android:textStyle="bold" />
 
@@ -144,7 +144,7 @@
         android:layout_below="@id/txt_mybook"
         android:layout_marginTop="10dp"
         android:padding="4dp"
-        app:cardBackgroundColor="#FAFAFA"
+        app:cardBackgroundColor="@color/cardmaincolor"
         app:cardCornerRadius="8dp">
 
         <android.support.v7.widget.RecyclerView

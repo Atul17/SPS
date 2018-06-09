@@ -155,7 +155,6 @@ public class UserParkingActivity extends AppCompatActivity implements View.OnCli
                 Intent i2 = new Intent(mContext, UserParkingBookActivity.class);
                 i2.putExtra("prk_no", prk_name);
                 i2.putExtra("area_name", area_name);
-
                 startActivity(i2);
                 break;
             case R.id.crdpl3:
@@ -163,7 +162,6 @@ public class UserParkingActivity extends AppCompatActivity implements View.OnCli
                 Intent i3 = new Intent(mContext, UserParkingBookActivity.class);
                 i3.putExtra("prk_no", prk_name);
                 i3.putExtra("area_name", area_name);
-
                 startActivity(i3);
                 break;
             case R.id.crdpl4:
@@ -171,7 +169,6 @@ public class UserParkingActivity extends AppCompatActivity implements View.OnCli
                 Intent i4 = new Intent(mContext, UserParkingBookActivity.class);
                 i4.putExtra("prk_no", prk_name);
                 i4.putExtra("area_name", area_name);
-
                 startActivity(i4);
                 break;
             case R.id.crdpl5:
@@ -179,7 +176,6 @@ public class UserParkingActivity extends AppCompatActivity implements View.OnCli
                 Intent i5 = new Intent(mContext, UserParkingBookActivity.class);
                 i5.putExtra("prk_no", prk_name);
                 i5.putExtra("area_name", area_name);
-
                 startActivity(i5);
                 break;
             case R.id.crdpl6:

@@ -29,7 +29,16 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private String email, pwsd;
     private Context mContext;
     private FirebaseAuth auth;
+    private FirebaseUser user;
+    private FirebaseAuth.AuthStateListener mAuthListener;
     private ProgressBar mProgressBar;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        auth.addAuthStateListener(mAuthListener);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +53,17 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
 
         auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if (user != null) {
+                    startActivity(new Intent(mContext, UserActivity.class));
+                    finish();
+                }
+            }
+        };
 
         btn_signin.setOnClickListener(this);
 
