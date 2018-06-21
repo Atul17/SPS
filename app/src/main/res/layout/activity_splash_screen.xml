@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="@drawable/splashscreen"
     tools:context=".SplashScreenActivity">
 
     <ImageView
@@ -18,9 +18,11 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:fontFamily="cursive"
+        android:fontFamily="@font/cantora_one"
         android:text="Welcome To Smart Parking System"
-        android:textColor="@color/colorAccent"
-        android:textSize="23dp"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
         android:textStyle="bold" />
 </RelativeLayout>

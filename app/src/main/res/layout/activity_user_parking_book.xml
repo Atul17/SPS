@@ -17,6 +17,7 @@
         <EditText
             android:id="@+id/edtprk_slot_no"
             android:layout_width="match_parent"
+            android:fontFamily="@font/quantico"
             android:layout_height="wrap_content"
             android:enabled="false"
             android:hint="Parking Slot No"
@@ -33,6 +34,7 @@
         <EditText
             android:id="@+id/edtprk_area_name"
             android:layout_width="match_parent"
+            android:fontFamily="@font/quantico"
             android:layout_height="wrap_content"
             android:enabled="false"
             android:hint="Parking Area Name"
@@ -51,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Parking Slot Vehicle Number"
+            android:fontFamily="@font/quantico"
             android:inputType="text"
             android:textAllCaps="true"
             android:textColor="@color/colorAccent"
@@ -62,6 +65,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/ed2"
+        android:fontFamily="@font/quantico"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="Book Slot"

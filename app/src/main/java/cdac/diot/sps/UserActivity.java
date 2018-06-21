@@ -138,13 +138,13 @@ public class UserActivity extends AppCompatActivity
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                bar.setVisibility(View.GONE);
-                getBookingData(dataSnapshot);
+                //bar.setVisibility(View.GONE);
+                //getBookingData(dataSnapshot);
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-
+                //getBookingData(dataSnapshot);
             }
 
             @Override

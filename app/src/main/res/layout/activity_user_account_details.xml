@@ -22,6 +22,7 @@
         android:layout_below="@id/img_user"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/quantico"
         android:text="User Name"
         android:textColor="@android:color/white"
         android:textSize="20dp" />
@@ -56,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
+                android:fontFamily="@font/quantico"
                 android:text="Email"
                 android:textColor="@color/parkareacolor"
                 android:textSize="20sp" />
@@ -74,6 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
+                android:fontFamily="@font/quantico"
                 android:text="Mobile"
                 android:textAlignment="center"
                 android:textColor="@color/parkareacolor"

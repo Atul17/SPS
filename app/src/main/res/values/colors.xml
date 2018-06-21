@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#37474F</color>
-    <color name="colorPrimaryDark">#263238</color>
+    <color name="colorPrimary">#0277BD</color>
+    <color name="colorPrimaryDark">#01579B</color>
     <color name="colorAccent">#01579B</color>
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="windowBackground">#FFFFFF</color>
@@ -10,7 +10,7 @@
     <color name="btntextcolor">#EF5350</color>
     <color name="book">#EF5350</color>
     <color name="parkareacolor">#EF6C00</color>
-    <color name="cardlistcolor">#FFEBEE</color>
+    <color name="cardlistcolor">#F0F4C3</color>
     <color name="cardmaincolor">#E3F2FD</color>
 
 </resources>
