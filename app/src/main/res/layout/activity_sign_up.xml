@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FAFAFA"
     android:layout_margin="4dp"
     android:orientation="vertical"
     tools:context=".SignUpActivity">
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:fontFamily="serif-monospace"
+        android:fontFamily="@font/quantico"
         android:text="Please Fill the below details"
         android:textColor="@color/colorAccent"
         android:textSize="17dp"
@@ -30,6 +31,7 @@
             android:id="@+id/edt_user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/signika_negative_light"
             android:hint="User Name"
             android:inputType="textPersonName"
             android:textColor="@color/edittextcolor" />
@@ -45,6 +47,7 @@
             android:id="@+id/edt_user_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/signika_negative_light"
             android:hint="Email Address"
             android:inputType="textEmailAddress"
             android:textColor="@color/edittextcolor" />
@@ -60,6 +63,7 @@
             android:id="@+id/edt_user_mobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/signika_negative_light"
             android:hint="Mobile No"
             android:inputType="phone"
             android:maxLength="10"
@@ -76,6 +80,7 @@
             android:id="@+id/edt_user_passwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/signika_negative_light"
             android:hint="Password"
             android:inputType="textPassword"
             android:textColor="@color/edittextcolor" />
@@ -91,6 +96,7 @@
             android:id="@+id/edt_user_cnf_passwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/signika_negative_light"
             android:hint="Confirm Password"
             android:inputType="textPassword"
             android:textColor="@color/edittextcolor" />
@@ -102,10 +108,11 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:background="@color/btntextcolor"
-        android:fontFamily="sans-serif-condensed"
+        android:textSize="14sp"
+        android:background="#00897B"
+        android:fontFamily="@font/quantico"
         android:text="Register"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="#FFFF00"
         android:textStyle="bold" />
 
     <ProgressBar
