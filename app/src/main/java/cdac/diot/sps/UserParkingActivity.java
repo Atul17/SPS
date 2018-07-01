@@ -110,34 +110,64 @@ public class UserParkingActivity extends AppCompatActivity implements View.OnCli
             long b = slotDetails.getBook_status();
             long st = slotDetails.getSlot_status();
             String pl_name = slotDetails.getpl_name();
-            //txtfl1.setText(b + " " + st + " " + pl_name);
-            if (b == 1 && pl_name.equals("pl1")) {
-                crdpl1.setCardBackgroundColor(Color.RED);
-                crdpl1.setClickable(false);
-            } else if (b == 1 && pl_name.equals("pl2")) {
-                crdpl2.setCardBackgroundColor(Color.RED);
-                crdpl2.setClickable(false);
 
-            } else if (b == 1 && pl_name.equals("pl3")) {
-                crdpl3.setCardBackgroundColor(Color.RED);
-                crdpl3.setClickable(false);
-
-            } else if (b == 1 && pl_name.equals("pl4")) {
-                crdpl4.setCardBackgroundColor(Color.RED);
-                crdpl4.setClickable(false);
-
-            } else if (b == 1 && pl_name.equals("pl5")) {
-                crdpl5.setCardBackgroundColor(Color.RED);
-                crdpl5.setClickable(false);
-
-            } else if (b == 1 && pl_name.equals("pl6")) {
-                crdpl6.setCardBackgroundColor(Color.RED);
-                crdpl6.setClickable(false);
-            } else {
-
+            switch(pl_name){
+                case "pl1":
+                    if (b == 1) {
+                        crdpl1.setCardBackgroundColor(getResources().getColor(R.color.colorParkSlotFull));
+                        crdpl1.setClickable(false);
+                    }
+                    else {
+                        crdpl1.setCardBackgroundColor(getResources().getColor(R.color.colorParkSlotEmpty));
+                    }
+                    break;
+                case "pl2":
+                    if (b == 1) {
+                        crdpl2.setCardBackgroundColor(getResources().getColor(R.color.colorParkSlotFull));
+                        crdpl2.setClickable(false);
+                    }
+                    else {
+                        crdpl2.setCardBackgroundColor(getResources().getColor(R.color.colorParkSlotEmpty));
+                    }
+                    break;
+                case "pl3":
+                    if (b == 1) {
+                        crdpl3.setCardBackgroundColor(getResources().getColor(R.color.colorParkSlotFull));
+                        crdpl3.setClickable(false);
+                    }
+                    else {
+                        crdpl3.setCardBackgroundColor(getResources().getColor(R.color.colorParkSlotEmpty));
+                    }
+                    break;
+                case "pl4":
+                    if (b == 1) {
+                        crdpl4.setCardBackgroundColor(getResources().getColor(R.color.colorParkSlotFull));
+                        crdpl4.setClickable(false);
+                    }
+                    else {
+                        crdpl4.setCardBackgroundColor(getResources().getColor(R.color.colorParkSlotEmpty));
+                    }
+                    break;
+                case "pl5":
+                    if (b == 1) {
+                        crdpl5.setCardBackgroundColor(getResources().getColor(R.color.colorParkSlotFull));
+                        crdpl5.setClickable(false);
+                    }
+                    else {
+                        crdpl5.setCardBackgroundColor(getResources().getColor(R.color.colorParkSlotEmpty));
+                    }
+                    break;
+                case "pl6":
+                    if (b == 1) {
+                        crdpl6.setCardBackgroundColor(getResources().getColor(R.color.colorParkSlotFull));
+                        crdpl6.setClickable(false);
+                    }
+                    else {
+                        crdpl6.setCardBackgroundColor(getResources().getColor(R.color.colorParkSlotEmpty));
+                    }
+                    break;
             }
         }
-
     }
 
     @Override
@@ -186,7 +216,5 @@ public class UserParkingActivity extends AppCompatActivity implements View.OnCli
                 startActivity(i6);
                 break;
         }
-
-
     }
 }

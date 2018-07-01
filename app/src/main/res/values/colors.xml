@@ -12,5 +12,7 @@
     <color name="parkareacolor">#EF6C00</color>
     <color name="cardlistcolor">#F0F4C3</color>
     <color name="cardmaincolor">#E3F2FD</color>
+    <color name="colorParkSlotEmpty">#76FF03</color>
+    <color name="colorParkSlotFull">#EF5350</color>
 
 </resources>
