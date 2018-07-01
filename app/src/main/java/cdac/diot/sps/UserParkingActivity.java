@@ -4,11 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -38,6 +42,7 @@ public class UserParkingActivity extends AppCompatActivity implements View.OnCli
             area_name = bundle.getString("area_name");
         }
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         crdpl1 = findViewById(R.id.crdpl1);
         crdpl2 = findViewById(R.id.crdpl2);
         crdpl3 = findViewById(R.id.crdpl3);
@@ -216,5 +221,16 @@ public class UserParkingActivity extends AppCompatActivity implements View.OnCli
                 startActivity(i6);
                 break;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

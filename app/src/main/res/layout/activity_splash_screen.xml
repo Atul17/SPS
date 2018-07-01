@@ -22,7 +22,7 @@
         android:text="Welcome To Smart Parking System"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
         android:textStyle="bold" />
 </RelativeLayout>
