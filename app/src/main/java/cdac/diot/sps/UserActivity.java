@@ -272,11 +272,13 @@ public class UserActivity extends AppCompatActivity
                 startActivity(i);
                 break;
             case R.id.crdwhitefield:
-                Intent w = new Intent(mContext, UserParkingActivity.class);
+                /*Intent w = new Intent(mContext, UserParkingActivity.class);
                 area_name = txt_white.getText().toString().trim();
                 w.putExtra("area_name", area_name);
                 startActivity(w);
-                break;
+                break;*/
+                Intent n = new Intent(mContext,UserActivity2.class);
+                startActivity(n);
         }
     }
 
